@@ -20,7 +20,7 @@ go build -o resetpv
 
 ## Usage
 
-```shell
+```text
 Usage:
   resetpv [flags] <persistent volume name>
 
