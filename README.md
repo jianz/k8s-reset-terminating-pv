@@ -6,6 +6,8 @@ Reset persistent volume status from terminating back to bound. [Here are the det
 
 When delete a kubernetes persistent volume by accident, it may stuck in the terminating status due to `kubernetes.io/pv-protection` finalizer prevent it from being deleted. You can use this tool to reset its status back to bound.
 
+Now you can change pvc status too.
+
 ## Installing
 
 You can download the latest compiled binary from [here](https://github.com/jianz/k8s-reset-terminating-pv/releases).
