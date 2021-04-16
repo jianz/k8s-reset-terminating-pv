@@ -6,6 +6,8 @@ Reset persistent volume status from terminating back to bound. [Here are the det
 
 When delete a kubernetes persistent volume by accident, it may stuck in the terminating status due to `kubernetes.io/pv-protection` finalizer prevent it from being deleted. You can use this tool to reset its status back to bound.
 
+Now you can change pvc status too.
+
 ## Installing
 
 You can download the latest compiled binary from [here](https://github.com/jianz/k8s-reset-terminating-pv/releases).
@@ -22,7 +24,7 @@ go build -o resetpv
 
 ```text
 Usage:
-  resetpv [flags] <persistent volume name>
+  resetpv [flags] <resource resourceName [namespace]>
 
 Flags:
       --etcd-ca        string   CA Certificate used by etcd (default "ca.crt")
@@ -47,9 +49,13 @@ kubectl port-forward pods/etcd-member-master0 2379:2379 -n etcd
 Example:
 
 ```shell
-./resetpv --k8s-key-prefix kubernetes.io pv-eef4ec4b-326d-47e6-b11c-6474a5fd4d89
+./resetpv --k8s-key-prefix kubernetes.io pv pv-eef4ec4b-326d-47e6-b11c-6474a5fd4d89
 ```
 
+if you want to change pvc status do as follow
+```shell
+./resetpv  pvc pvcname namespace
+```
 ## License
 
 k8s-reset-terminating-pv is released under the MIT license.
